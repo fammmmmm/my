@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>控制台</title>  
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Page JS Plugins CSS -->
+        <link rel="stylesheet" href="__ADMIN__/assets/js/plugins/datatables/jquery.dataTables.min.css" />
+
+        <!-- AppUI CSS stylesheets -->
+        <!-- <link rel="stylesheet" id="css-font-awesome" href="__ADMIN__/assets/css/font-awesome.css" /> -->
+        <link rel="stylesheet" id="css-ionicons" href="__ADMIN__/assets/css/ionicons.css" />
+        <link rel="stylesheet" id="css-fontawesome" href="__ADMIN__/assets/css/font-awesome.css" />
+        <link rel="stylesheet" id="css-fontawesomemin" href="__ADMIN__/assets/css/font-awesome.min.css" />
+        <link rel="stylesheet" id="css-bootstrap" href="__ADMIN__/assets/css/bootstrap.css" />
+        <link rel="stylesheet" id="css-app" href="__ADMIN__/assets/css/app.css" />
+        <link rel="stylesheet" id="css-app-custom" href="__ADMIN__/assets/css/app-custom.css" />
+        <!-- End Stylesheets -->
+
+		
+		<link rel="stylesheet" href="__ADMIN__/assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="__ADMIN__/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="__ADMIN__/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__ADMIN__/assets/css/ace-skins.min.css" />
+		<script src="__ADMIN__/assets/js/ace-extra.min.js"></script>
+    </head>
+    <body>
+        {include file="public/navbar"}
+        <div class="main-container" id="main-container">
+            <script type="text/javascript">
+                try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+            </script>
+            <div class="main-container-inner">
+                <a class="menu-toggler" id="menu-toggler" href="#">
+                    <span class="menu-text"></span>
+                </a>
+                {include file="public/sidebar"}
+                <div class="main-content">
+					<div class="page-content">
+						<div class="page-header">
+							 <h1>
+                                管理员操作
+                                <small>
+                                    <i class="icon-double-angle-right"></i>
+                                     查看非管理
+                                </small>
+                            </h1>
+						</div><!-- /.page-header -->
+						<div class="app-layout-canvas">
+					        <div class="app-layout-container">
+					            <main class="app-layout-content">
+
+					                <!-- Page Content -->
+					                <div class="container-fluid p-y-md">
+
+					                    <!-- Dynamic Table Full -->
+					                    <div class="card"> 
+                                    			<button class="btn btn-sm btn-app" id="generate-excel"type="button" data-dismiss="modal"><i class="ion-checkmark"></i>导出excle</button>
+					                        <div class="card-block">
+					                            <table class="table table-bordered table-striped table-vcenter js-dataTable-full" id="test_table">
+					                                <thead>
+					                                    <tr>
+
+					                                        <th>账号</th>
+					                                        <th class="hidden-xs" hidden="hidden" >员工密码</th>
+					                                        <th class="hidden-xs">真实姓名</th>
+					                                        <th class="hidden-xs" hidden="hidden">性别(1.男2.女)</th>
+					                                        <th class="hidden-xs w-20" hidden="hidden">出生日期</th>
+					                                        <th class="hidden-xs w-20" hidden="hidden">学历(1.高中2.学士3.硕士4.博士5.其它)</th>
+					                                        <th class="hidden-xs w-20" hidden="hidden">籍贯</th>
+					                                        <th class="hidden-xs w-20" hidden="hidden">地址</th>
+					                                        <th class="hidden-xs w-20" hidden="hidden">电话号码</th>
+					                                        <th class="hidden-xs w-20" hidden="hidden">工龄</th>
+					                                        <th class="hidden-xs w-20">员工工资</th>	
+					                                        <th class="text-center" style="width: 15%;">详情/修改</th>
+					                                        <th class="text-center" style="width: 10%;">更多操作</th>
+					                                    </tr>                                                       
+					                                </thead>
+					                                <tbody>
+					                                	{volist name="user" id="v"}
+					                                    <tr>
+					                                        <td class="text-center">{$v.user_account}</td>
+					                                        <td class="text-center" hidden="hidden">{$v.user_password}</td>
+					                                        <td class="font-500">{$v.user_name}</td>
+					                                        <td class="hidden-xs" hidden="hidden">{$v.user_sex}</td>
+					                                        <td class="hidden-xs"  hidden="hidden"><i class="fa fa-cny"></i>{$v.user_brith}</td>
+					                                        <td class="hidden-xs"  hidden="hidden"><i class="fa fa-cny"></i>{$v.user_education}</td>
+					                                        <td class="hidden-xs"  hidden="hidden"><i class="fa fa-cny"></i>{$v.user_native}</td>
+					                                        <td class="hidden-xs"  hidden="hidden"><i class="fa fa-cny"></i>{$v.user_address}</td>
+					                                        <td class="hidden-xs"  hidden="hidden"><i class="fa fa-cny"></i>{$v.user_phone}</td>
+					                                        <td class="hidden-xs"  hidden="hidden"><i class="fa fa-cny"></i>{$v.user_seniority}</td>
+					                                        <td class="hidden-xs"><i class="fa fa-cny"></i>{$v.user_wages}</td>
+															
+ 															<td class="text-center">
+					                                            <div class="btn-group">
+					                                            	<button class="btn btn-xs btn-default" type="button" data-toggle="modal" data-target="#modal-normal"><i class="ion-edit"></i></button></a>
+					                                            </div>
+					                                        </td>                                     
+					                                        <td class="text-center">
+					                                            <div class="btn-group">                
+					                                                <a href="javascript:if(confirm('确认删除？')) location='{:url('admin/del',array('user_id'=>$v.user_Id))}'"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="删除用户"><i class="ion-close"></i></button></a>
+					                                            </div>
+					                                        </td>
+					                                    </tr>
+					                                    {/volist}
+					                                </tbody>
+					                            </table>
+					                         <!-- 弹框 -->
+					<div class="modal" id="modal-normal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                           		<div class="card-block">
+                                    <p>                                    
+                                    	<span class="user-info">账号:</span><input id="user_account_a" type="text" value="">                             
+                                    </p>
+                                    <p>                                    
+                                        <span class="user-info">真实姓名:</span><input id="user_rname_a" type="text" value="">                       	
+                                    </p>
+									<p>                                    
+			                           	<span class="user-info">登录密码:</span><input id="user_password_a" type="text" value="">                             
+			                        </p>
+			                        <p>                                    
+                                        <span class="user-info">出生日期:</span><input id="user_brith_a" type="date" value="">                       	
+                                    </p>   
+                                    <p>
+                                    	<span class="user-info">性别：</span><input id="sex-man" type="radio" checked="checked" name="1" value="1" /><label for="sex-man">男</label><input id="sex-woman" type="radio"  name="1" value="2" /><label for="sex-woman">女</label>
+                                    </p> 
+                                          
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">退出</button>
+                                    <button class="btn btn-sm btn-app" type="button" data-dismiss="modal"><i class="ion-checkmark"></i>修改</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Normal Modal -->
+					                        </div>
+					                        <!-- .card-block -->
+					                    </div>
+					                    <!-- .card -->
+					                    <!-- End Dynamic Table Full -->
+					                </div>
+					       </div>
+					    </div>
+					</div><!-- /.page-content -->
+                </div>
+
+            </div>
+        </div>
+
+		<script src='__ADMIN__/assets/js/jquery-2.0.3.min.js'></script>
+		<script src='__ADMIN__/assets/js/FileSaver.js'></script>
+        <script src='__ADMIN__/assets/js/jszip.min.js'></script>
+		<script src='__ADMIN__/assets/js/excel-gen.js'></script>
+		<script src="__ADMIN__/assets/js/bootstrap.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery.slimscroll.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery.easy-pie-chart.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery.sparkline.min.js"></script>
+		<script src="__ADMIN__/assets/js/ace.min.js"></script>
+        <!-- AppUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock and App.js -->
+        <script src="__ADMIN__/assets/js/core/jquery.slimscroll.min.js"></script>
+        <script src="__ADMIN__/assets/js/core/jquery.scrollLock.min.js"></script>
+        <script src="__ADMIN__/assets/js/core/jquery.placeholder.min.js"></script>
+        <script src="__ADMIN__/assets/js/app.js"></script>
+        <script src="__ADMIN__/assets/js/app-custom.js"></script>
+        <!-- Page JS Plugins -->
+        <script src="__ADMIN__/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <!-- Page JS Code -->
+        <script src="__ADMIN__/assets/js/pages/base_tables_datatables.js"></script>
+        <script type="text/javascript">
+			$(document).ready(function () 
+			{
+				excel = new ExcelGen({
+			    "src_id": "test_table",
+			    "show_header": true
+				});
+    		$("#generate-excel").click(function () {
+        		excel.generate();
+    		});
+
+			});
+        </script>
+    </body>
+</html>
+

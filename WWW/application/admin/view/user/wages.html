@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>控制台 </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- basic styles -->
+        <link href="__ADMIN__/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="__ADMIN__/assets/css/font-awesome.min.css" />
+
+        <!--[if IE 7]>
+          <link rel="stylesheet" href="__ADMIN__/assets/css/font-awesome-ie7.min.css" />
+        <![endif]-->
+
+        <!-- page specific plugin styles -->
+
+        <!-- fonts -->
+
+        <!-- ace styles -->
+
+        <link rel="stylesheet" href="__ADMIN__/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="__ADMIN__/assets/css/ace-rtl.min.css" />
+        <link rel="stylesheet" href="__ADMIN__/assets/css/ace-skins.min.css" />
+
+        <!--[if lte IE 8]>
+          <link rel="stylesheet" href="__ADMIN__/assets/css/ace-ie.min.css" />
+        <![endif]-->
+
+        <!-- inline styles related to this page -->
+
+        <!-- ace settings handler -->
+
+        <script src="__ADMIN__/assets/js/ace-extra.min.js"></script>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+        <!--[if lt IE 9]>
+        <script src="__ADMIN__/assets/js/html5shiv.js"></script>
+        <script src="__ADMIN__/assets/js/respond.min.js"></script>
+        <![endif]-->
+            <script src="__ADMIN__/ueditor/ueditor.config.js"></script>
+    <script src="__ADMIN__/ueditor/ueditor.all.min.js"></script>
+    <script src="__ADMIN__/ueditor/lang/zh-cn/zh-cn.js"></script>
+    </head>
+
+    <body>
+        <!-- navbar -->
+        {include file="public/navbar"}
+        <!-- /navbar -->
+        <div class="main-container" id="main-container">
+            <script type="text/javascript">
+                try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+            </script>
+
+            <div class="main-container-inner">
+                <a class="menu-toggler" id="menu-toggler" href="#">
+                    <span class="menu-text"></span>
+                </a>
+                <!-- sidebar -->
+                {include file="public/sidebar"}
+                <!-- /sidebar -->
+
+                <div class="main-content">
+                    <div class="page-content">
+                        <div class="page-header">
+                            <h1>
+                                用户操作
+                                <small>
+                                    <i class="icon-double-angle-right"></i>
+                                     查看/修改个人资料
+                                </small>
+                            </h1>
+                        </div><!-- /.page-header -->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-horizontal" >
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_account"> 用户账号 </label>
+                                        <div class="col-sm-9">
+                                            <input readonly unselectable="on"  id="user_account" value="{$user['user_account']}" name="user_account" type="text"  class="mui-input-numbox">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_seniority"> 基本工资 </label>
+                                        <div class="col-sm-9">
+                                            <input readonly unselectable="on" id="user_wages"value="{$user['user_wages']}" name="user_wages"type="number" class="mui-input-numbox" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_seniority"> 工龄 </label>
+                                        <div class="col-sm-9">
+                                            <input readonly unselectable="on" id="user_seniority"value="{$user['user_seniority']}" name="user_seniority"type="number" class="mui-input-numbox" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_seniority"> 工作时间(天) </label>
+                                        <div class="col-sm-9">
+                                            <input id="worktime" value="" name="worktime"type="number" class="mui-input-numbox" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_seniority"> 实际月工资 </label>
+                                        <div class="col-sm-3">
+                                            <input id="money"value="" name="money"type="number" class="mui-input-numbox" />
+                                        </div>
+                                        <label class="col-sm-6" for="user_seniority">薪水＝（基本工资＋10╳月有效工作日天数＋月效益╳工作年限÷100）╳0.9－月保险金</label>
+                                    </div>                                                              
+                                    <div class="clearfix form-actions">
+                                        <div class="col-md-offset-3 col-md-9">
+                                        <button type="submit" name="" value="修改用户" onclick="javascript:button_onclick()" class="btn btn-info">计算</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /.page-content -->
+                </div><!-- /.main-content -->
+
+            </div><!-- /.main-container-inner -->
+
+        </div><!-- /.main-container -->
+
+        <!-- basic scripts -->
+
+        <!--[if !IE]> -->
+
+
+        <!-- <![endif]-->
+
+        <!--[if IE]>
+<![endif]-->
+
+        <!--[if !IE]> -->
+
+        <script src='__ADMIN__/assets/js/jquery-2.0.3.min.js'></script>
+        <script src="__ADMIN__/validform/validform.js"></script>
+        <script src="__ADMIN__/assets/js/bootstrap.min.js"></script>
+        <script src="__ADMIN__/assets/js/typeahead-bs2.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery.ui.touch-punch.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery.slimscroll.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery.easy-pie-chart.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery.sparkline.min.js"></script>
+        <script src="__ADMIN__/assets/js/flot/jquery.flot.min.js"></script>
+        <script src="__ADMIN__/assets/js/flot/jquery.flot.pie.min.js"></script>
+        <script src="__ADMIN__/assets/js/flot/jquery.flot.resize.min.js"></script>
+        <script src="__ADMIN__/assets/js/ace-elements.min.js"></script>
+        <script src="__ADMIN__/assets/js/ace.min.js"></script>
+        <link rel="stylesheet" href="__ADMIN__/jfu/css/jquery.fileupload.css">  
+        <link rel="stylesheet" href="__ADMIN__/jfu/css/jquery.fileupload-ui.css"> 
+        <!-- <script src="__ADMIN__/js/jquery-2.0.3.min.js"></script>  -->
+        <script src="__ADMIN__/jfu/js/vendor/jquery.ui.widget.js"></script>  
+        <script src="__ADMIN__/jfu/js/jquery.fileupload.js"></script>  
+        <script src="__ADMIN__/jfu/js/jquery.iframe-transport.js"></script> 
+        <script>
+            function button_onclick(){
+
+                var worktime = parseInt($("#worktime").val());
+                var seniority = parseInt($("#user_seniority").val());
+                var wages = parseInt($("#user_wages").val());
+                var money = ( wages + 10 * worktime + 0.5 * seniority /100 ) * 0.9 - 1000;
+                money = money.toFixed(2);
+                $('#money').val(money);
+            }
+        </script>
+    </body>
+</html>
+

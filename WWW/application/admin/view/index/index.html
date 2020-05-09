@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>控制台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="__ADMIN__/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__ADMIN__/assets/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="__ADMIN__/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="__ADMIN__/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__ADMIN__/assets/css/ace-skins.min.css" />
+		<script src="__ADMIN__/assets/js/ace-extra.min.js"></script>
+	</head>
+
+	<body>
+		<!-- navbar -->
+		{include file="public/navbar"}
+		<!-- /navbar -->
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				<a class="menu-toggler" id="menu-toggler" href="#">
+					<span class="menu-text"></span>
+				</a>
+				<!-- sidebar -->
+				{include file="public/sidebar"}
+				<!-- /sidebar -->
+
+				<div class="main-content">
+					<div class="page-content">
+						<div class="page-header">
+							<h1>
+								欢迎来到工程师管理系统
+							</h1>
+						</div><!-- /.page-header -->
+
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+
+			</div><!-- /.main-container-inner -->
+
+		</div><!-- /.main-container -->
+		<script src='__ADMIN__/assets/js/jquery-2.0.3.min.js'></script>
+		<script src="__ADMIN__/assets/js/bootstrap.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery.slimscroll.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery.easy-pie-chart.min.js"></script>
+		<script src="__ADMIN__/assets/js/jquery.sparkline.min.js"></script>
+		<script src="__ADMIN__/assets/js/ace.min.js"></script>
+	</body>
+</html>
+

@@ -1,0 +1,101 @@
+
+<div class="sidebar" id="sidebar">
+	<script type="text/javascript">
+		try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+	</script>
+
+	<div class="sidebar-collapse" id="sidebar-collapse">
+		<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+	</div>
+	<ul class="nav nav-list">
+		<li class="active">
+			<a href="__admin__/">
+				<i class="icon-dashboard"></i>
+				<span class="menu-text"> 首页 </span>
+			</a>
+		</li>
+		<li>
+			<a href="{:url('index/chart')}" class="dropdown-toggle">
+				<i class="icon-double-angle-right"></i>
+				<span class="menu-text"> 公司主要情况图表 </span>
+				<b class="arrow icon-angle-right"></b>
+			</a>
+		</li>
+		{if condition=" $Think.session.Authority == 2"}
+		<li>
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-double-angle-right"></i>
+				<span class="menu-text"> 特权管理员操作 </span>
+				<b class="arrow icon-angle-right"></b>
+			</a>
+			<ul class="submenu">
+				<li>
+					<a href="{:url('admin/add')}" class="dropdown-toggle">
+						<i class="icon-double-angle-right"></i>
+						添加管理员
+						<b class="arrow icon-double-angle-right"></b>
+					</a>
+				</li>
+				<li>
+					<a href="{:url('admin/adminlist')}" class="dropdown-toggle">
+						<i class="icon-double-angle-right"></i>
+						查看管理员
+						<b class="arrow icon-double-angle-right"></b>
+					</a>
+				</li>
+			</ul>
+		</li>
+		{/if}
+		{if condition=" $Think.session.Authority <> 0"}
+		<li>
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-double-angle-right"></i>
+				<span class="menu-text"> 管理员操作 </span>
+				<b class="arrow icon-angle-right"></b>
+			</a>
+			<ul class="submenu">
+				<li>
+					<a href="{:url('manager/add')}" class="dropdown-toggle">
+						<i class="icon-double-angle-right"></i>
+						添加用户
+						<b class="arrow icon-double-angle-right"></b>
+					</a>
+				</li>
+				<li>
+					<a href="{:url('manager/adminlist')}" class="dropdown-toggle">
+						<i class="icon-double-angle-right"></i>
+						查看用户
+						<b class="arrow icon-double-angle-right"></b>
+					</a>
+				</li>
+			</ul>
+		</li>
+		{/if}
+		<li>
+			<a href="#" class="dropdown-toggle">
+				<i class="icon-double-angle-right"></i>
+				<span class="menu-text"> 用户操作 </span>
+				<b class="arrow icon-angle-right"></b>
+			</a>
+			<ul class="submenu">
+				<li>
+					<a href="{:url('user/index')}" class="dropdown-toggle">
+						<i class="icon-double-angle-right"></i>
+						查看个人信息
+						<b class="arrow icon-double-angle-right"></b>
+					</a>
+				</li>
+				<li>
+					<a href="{:url('user/wages')}" class="dropdown-toggle">
+						<i class="icon-double-angle-right"></i>
+						查看工资
+						<b class="arrow icon-double-angle-right"></b>
+					</a>
+				</li>
+			</ul>
+		</li>
+	</ul><!-- /.nav-list -->
+	<script type="text/javascript">
+		try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+	</script>
+</div>

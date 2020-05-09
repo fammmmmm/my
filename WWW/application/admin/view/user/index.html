@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>控制台 </title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- basic styles -->
+        <link href="__ADMIN__/assets/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="__ADMIN__/assets/css/font-awesome.min.css" />
+
+        <!--[if IE 7]>
+          <link rel="stylesheet" href="__ADMIN__/assets/css/font-awesome-ie7.min.css" />
+        <![endif]-->
+
+        <!-- page specific plugin styles -->
+
+        <!-- fonts -->
+
+        <!-- ace styles -->
+
+        <link rel="stylesheet" href="__ADMIN__/assets/css/ace.min.css" />
+        <link rel="stylesheet" href="__ADMIN__/assets/css/ace-rtl.min.css" />
+        <link rel="stylesheet" href="__ADMIN__/assets/css/ace-skins.min.css" />
+
+        <!--[if lte IE 8]>
+          <link rel="stylesheet" href="__ADMIN__/assets/css/ace-ie.min.css" />
+        <![endif]-->
+
+        <!-- inline styles related to this page -->
+
+        <!-- ace settings handler -->
+
+        <script src="__ADMIN__/assets/js/ace-extra.min.js"></script>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+        <!--[if lt IE 9]>
+        <script src="__ADMIN__/assets/js/html5shiv.js"></script>
+        <script src="__ADMIN__/assets/js/respond.min.js"></script>
+        <![endif]-->
+            <script src="__ADMIN__/ueditor/ueditor.config.js"></script>
+    <script src="__ADMIN__/ueditor/ueditor.all.min.js"></script>
+    <script src="__ADMIN__/ueditor/lang/zh-cn/zh-cn.js"></script>
+    </head>
+
+    <body>
+        <!-- navbar -->
+        {include file="public/navbar"}
+        <!-- /navbar -->
+        <div class="main-container" id="main-container">
+            <script type="text/javascript">
+                try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+            </script>
+
+            <div class="main-container-inner">
+                <a class="menu-toggler" id="menu-toggler" href="#">
+                    <span class="menu-text"></span>
+                </a>
+                <!-- sidebar -->
+                {include file="public/sidebar"}
+                <!-- /sidebar -->
+
+                <div class="main-content">
+                    <div class="page-content">
+                        <div class="page-header">
+                            <h1>
+                                用户操作
+                                <small>
+                                    <i class="icon-double-angle-right"></i>
+                                     查看/修改个人资料
+                                </small>
+                            </h1>
+                        </div><!-- /.page-header -->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <form class="form-horizontal" role="form" action="{:url('user/updhanddle')}" method="post">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_account"> 用户账号 </label>
+                                        <div class="col-sm-9">
+                                            <input readonly  unselectable="on"  id="user_account" value="{$user['user_account']}" name="user_account" type="text"  class="col-xs-10 col-sm-5">
+                                        </div>
+                                    </div>                                 
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_name"> 用户姓名 </label>
+
+                                        <div class="col-sm-9">
+                                            <input id="user_rname" value="{$user['user_name']}"name="user_name" placeholder="用户姓名" class="col-xs-10 col-sm-5" type="text">
+                                        </div>
+                                    </div>                                   
+                                    <div class="form-group">
+                                        <label for="group_id" class="col-sm-3 control-label no-padding-right">性别</label>
+                                        <div class="col-sm-9">
+                                            <div class="radio" style="float:left; margin-right:10px;">
+                                            <label>
+                                                {if condition="$user['user_sex'] eq 1"}
+                                                <input checked="checked" name="user_sex" value="1"  type="radio">
+                                                {else/}
+                                                <input  name="user_sex" value="1"  type="radio">
+                                                {/if}
+                                                <span class="text">男</span>
+                                            </label>
+                                            </div>
+                                            <div class="radio" style="float:left; margin-right:10px;">
+                                            <label>
+                                                {if condition="$user['user_sex'] eq 2"}
+                                                <input  checked="checked" name="user_sex" value="2" type="radio">
+                                                {else/}
+                                                <input  name="user_sex" value="2"  type="radio">
+                                                {/if}
+                                                
+                                                <span class="text">女</span>
+                                            </label>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="form-group">
+                                                <label for="group_id" class="col-sm-3 control-label no-padding-right">学历</label>
+                                        <div class="col-sm-9">
+                                            <div class="radio" style="float:left; margin-right:10px;">
+                                                <label>
+                                                    <input name="user_education" id="g1"value="1"  type="radio">
+                                                    <span class="text">高中</span>
+                                                </label>
+                                            </div>
+                                            <div class="radio" style="float:left; margin-right:10px;">
+                                                <label>
+                                                    <input name="user_education" id="g2"class="inverted" value="2" type="radio">
+                                                    <span class="text">学士</span>
+                                                </label>
+                                            </div>
+                                            <div class="radio" style="float:left; margin-right:10px;">
+                                                <label>
+                                                    <input  class="inverted" id="g3"name="user_education" value="3"  type="radio">
+                                                    <span class="text">硕士</span>
+                                                </label>
+                                            </div>
+                                            <div class="radio" style="float:left; margin-right:10px;">
+                                                <label>
+                                                    <input name="user_education" id="g4"class="inverted" value="4" type="radio">
+                                                    <span class="text">博士</span>
+                                                </label>
+                                            </div>
+                                            <div class="radio" style="float:left; margin-right:10px;">
+                                                <label>
+                                                    <input name="user_education" id="g5"class="inverted" value="5" type="radio">
+                                                    <span class="text">其他</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_phone"> 用户电话 </label>
+                                        <div class="col-sm-9">
+                                            <input id="user_phone" name="user_phone" value=" {$user['user_phone']}"placeholder="用户电话"   class="col-xs-10 col-sm-5" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_brith"> 用户生日 </label>
+                                        <div class="col-sm-9">
+                                            <input id="user_brith" value="{$user['user_brith']}"name="user_brith" placeholder="用户生日"   class="col-xs-10 col-sm-5" type="date">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_native"> 用户籍贯 </label>
+                                        <div class="col-sm-9">
+                                            <input id="user_native" name="user_native" value="{$user['user_native']}"placeholder="用户籍贯"   class="col-xs-10 col-sm-5" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_address"> 用户地址 </label>
+                                        <div class="col-sm-9">
+                                            <input id="user_address"value="{$user['user_address']}" name="user_address" placeholder="用户地址"   class="col-xs-10 col-sm-5" type="text">
+                                        </div>
+                                    </div>  
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_seniority"> 工龄 </label>
+                                        <div class="col-sm-9">
+                                            <input id="user_seniority" value="{$user['user_seniority']}"name="user_seniority"type="number" class="mui-input-numbox" placeholder="工龄" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="user_seniority"> 基本工资 </label>
+                                        <div class="col-sm-9">
+                                            <input id="user_wages"value="{$user['user_wages']}" name="user_wages"type="number" class="mui-input-numbox" />
+                                        </div>
+                                    </div>
+                                    <div class="space-4"></div>
+                                    <div class="clearfix form-actions">
+                                        <div class="col-md-offset-3 col-md-9">
+                                        <input type="submit" name="" value="修改用户" class="btn btn-info">
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div><!-- /.page-content -->
+                </div><!-- /.main-content -->
+
+            </div><!-- /.main-container-inner -->
+
+        </div><!-- /.main-container -->
+
+        <!-- basic scripts -->
+
+        <!--[if !IE]> -->
+
+
+        <!-- <![endif]-->
+
+        <!--[if IE]>
+<![endif]-->
+
+        <!--[if !IE]> -->
+
+        <script src='__ADMIN__/assets/js/jquery-2.0.3.min.js'></script>
+        <script src="__ADMIN__/validform/validform.js"></script>
+        <script src="__ADMIN__/assets/js/bootstrap.min.js"></script>
+        <script src="__ADMIN__/assets/js/typeahead-bs2.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery.ui.touch-punch.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery.slimscroll.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery.easy-pie-chart.min.js"></script>
+        <script src="__ADMIN__/assets/js/jquery.sparkline.min.js"></script>
+        <script src="__ADMIN__/assets/js/flot/jquery.flot.min.js"></script>
+        <script src="__ADMIN__/assets/js/flot/jquery.flot.pie.min.js"></script>
+        <script src="__ADMIN__/assets/js/flot/jquery.flot.resize.min.js"></script>
+        <script src="__ADMIN__/assets/js/ace-elements.min.js"></script>
+        <script src="__ADMIN__/assets/js/ace.min.js"></script>
+        <link rel="stylesheet" href="__ADMIN__/jfu/css/jquery.fileupload.css">  
+        <link rel="stylesheet" href="__ADMIN__/jfu/css/jquery.fileupload-ui.css"> 
+        <!-- <script src="__ADMIN__/js/jquery-2.0.3.min.js"></script>  -->
+        <script src="__ADMIN__/jfu/js/vendor/jquery.ui.widget.js"></script>  
+        <script src="__ADMIN__/jfu/js/jquery.fileupload.js"></script>  
+        <script src="__ADMIN__/jfu/js/jquery.iframe-transport.js"></script> 
+        <script type="text/javascript">
+            var data = {$str};
+            if(data['user_education'] == 1)
+                $("#g1").attr("checked","checked");                            
+            if(data['user_education'] == 2)
+                $("#g2").attr("checked","checked");  
+            if(data['user_education'] == 3)
+                $("#g3").attr("checked","checked");  
+            if(data['user_education'] == 4)
+                $("#g4").attr("checked","checked");  
+            if(data['user_education'] == 5)
+                $("#g5").attr("checked","checked");  
+
+        </script> 
+    </body>
+</html>
+
